@@ -44,6 +44,15 @@ for info in contacts_list:
             new_list[key].append(item)
 
 result_list = list(new_list.values())
+#pprint(result_list)
+
+for contact in result_list:
+    if len(contact) == 7:
+        if '@' not in contact[6] and 'email' not in contact[6]:
+            contact.insert(4, contact[6])
+            del contact[5]
+            contact[6] = ''
+            print(contact)
 
 # Записать занные в новую адресную книгу
 with open("phonebook.csv", "w") as f:
